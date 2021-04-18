@@ -15,4 +15,9 @@ class Currency
     {
         return $this->code;
     }
+
+    public function isSame(Currency $otherCurrency): bool
+    {
+        return $this->code === $otherCurrency->code;
+    }
 }

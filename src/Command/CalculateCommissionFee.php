@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use App\Factory\DataProviderFactory;
+use App\Factory\OperationRepositoryFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -28,11 +28,7 @@ class CalculateCommissionFee extends Command
             return self::ERROR;
         }
 
-        $dataProvider = DataProviderFactory::create([$input->getArgument('csv_path')]);
-
-        foreach ($dataProvider as $data) {
-            var_dump($data);
-        }
+        $operations = OperationRepositoryFactory::create($input->getArguments());
 
         return self::SUCCESS;
     }

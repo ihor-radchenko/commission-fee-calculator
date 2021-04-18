@@ -4,7 +4,7 @@ namespace App\Contract;
 
 use Iterator;
 
-interface DataProvider extends Iterator
+interface OperationDataProvider extends Iterator
 {
 
 }

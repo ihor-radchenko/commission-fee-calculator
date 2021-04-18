@@ -2,9 +2,9 @@
 
 namespace App\DataProvider;
 
-use App\Contract\DataProvider;
+use App\Contract\OperationDataProvider;
 
-class CsvDataProvider implements DataProvider
+class CsvOperationDataProvider implements OperationDataProvider
 {
     private $file;
 
