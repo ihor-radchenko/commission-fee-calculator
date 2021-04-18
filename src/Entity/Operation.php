@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use Carbon\Carbon;
+use DateTimeImmutable;
 
 class Operation
 {
@@ -14,7 +14,7 @@ class Operation
 
     private $money;
 
-    public function __construct(Carbon $date, string $type, User $user, Money $money)
+    public function __construct(DateTimeImmutable $date, string $type, User $user, Money $money)
     {
         $this->date = $date;
         $this->type = $type;
@@ -22,7 +22,7 @@ class Operation
         $this->money = $money;
     }
 
-    public function getDate(): Carbon
+    public function getDate(): DateTimeImmutable
     {
         return $this->date;
     }

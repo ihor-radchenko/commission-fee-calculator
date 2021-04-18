@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Tests\Service;
 
+use App\Service\BcMath;
 use PHPUnit\Framework\TestCase;
-use App\Service\Math;
 
 class MathTest extends TestCase
 {
     /**
-     * @var Math
+     * @var BcMath
      */
     private $math;
 
     public function setUp()
     {
-        $this->math = new Math(2);
+        $this->math = new BcMath(2);
     }
 
     /**
