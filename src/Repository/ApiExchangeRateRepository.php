@@ -20,23 +20,24 @@ class ApiExchangeRateRepository implements ExchangeRateRepository
         $this->accessKey = $accessKey;
     }
 
-    public function getExchangeRateFor(Currency $currency): ExchangeRate
+    public function getExchangeRate(Currency $fromCurrency, Currency $toCurrency): ExchangeRate
     {
         $response = $this->client->get('latest', [
             'query' => [
                 'access_key' => $this->accessKey,
-                'symbols'    => (string) $currency,
+                'symbols'    => (string) $fromCurrency,
+//                'base'       => (string) $toCurrency,
             ],
         ])->getBody()->getContents();
 
         $exchangeRates = json_decode($response, true, 512, JSON_THROW_ON_ERROR);
 
         if ($exchangeRates['success']) {
-            $rate = $exchangeRates['rates'][(string) $currency];
+            $rate = $exchangeRates['rates'][(string) $fromCurrency];
 
-            return new ExchangeRate(new Currency('eur'), $currency, $rate);
+            return new ExchangeRate(new Currency($exchangeRates['base']), $fromCurrency, $rate);
         }
 
-        throw new InvalidCurrencyException($currency);
+        throw new InvalidCurrencyException($fromCurrency);
     }
 }

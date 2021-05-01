@@ -7,5 +7,5 @@ use App\Entity\ExchangeRate;
 
 interface ExchangeRateRepository
 {
-    public function getExchangeRateFor(Currency $currency): ExchangeRate;
+    public function getExchangeRate(Currency $fromCurrency, Currency $toCurrency): ExchangeRate;
 }

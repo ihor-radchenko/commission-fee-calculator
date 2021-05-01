@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 use App\Command\CalculateCommissionFee;
@@ -7,6 +8,9 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $app = new Application();
 
-$app->add(new CalculateCommissionFee());
+$command = new CalculateCommissionFee();
+
+$app->add($command);
+$app->setDefaultCommand($command->getName(), true);
 
 $app->run();

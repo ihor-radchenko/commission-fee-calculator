@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\Entity\Money;
 use App\Contract\Service\Math;
 
 class BcMath implements Math
@@ -16,31 +15,23 @@ class BcMath implements Math
         $this->scale = $scale;
     }
 
-    public function add(Money $money, Money $anotherMoney): Money
+    public function add(string $leftOperand, string $rightOperand): string
     {
-        $amount = bcadd($money, $anotherMoney, $this->scale);
-
-        return new Money($amount, $money->getCurrency());
+        return bcadd($leftOperand, $rightOperand, $this->scale);
     }
 
-    public function sub(Money $money, Money $anotherMoney): Money
+    public function sub(string $leftOperand, string $rightOperand): string
     {
-        $amount = bcsub($money, $anotherMoney, $this->scale);
-
-        return new Money($amount, $money->getCurrency());
+        return bcsub($leftOperand, $rightOperand, $this->scale);
     }
 
-    public function mul(Money $money, Money $anotherMoney): Money
+    public function mul(string $leftOperand, string $rightOperand): string
     {
-        $amount = bcmul($money, $anotherMoney, $this->scale);
-
-        return new Money($amount, $money->getCurrency());
+        return bcmul($leftOperand, $rightOperand, $this->scale);
     }
 
-    public function div(Money $money, Money $anotherMoney): Money
+    public function div(string $leftOperand, string $rightOperand): string
     {
-        $amount = bcdiv($money, $anotherMoney, $this->scale);
-
-        return new Money($amount, $money->getCurrency());
+        return bcdiv($leftOperand, $rightOperand, $this->scale);
     }
 }

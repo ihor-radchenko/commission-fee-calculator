@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Entity\Money;
 use App\Entity\Currency;
+use App\Contract\Service\Math;
 use App\Contract\Repository\ExchangeRateRepository;
 use App\Contract\Service\Exchanger as ExchangerContract;
 
@@ -11,9 +12,12 @@ class Exchanger implements ExchangerContract
 {
     private $exchangeRates;
 
-    public function __construct(ExchangeRateRepository $exchangeRates)
+    private $math;
+
+    public function __construct(ExchangeRateRepository $exchangeRates, Math $math)
     {
         $this->exchangeRates = $exchangeRates;
+        $this->math = $math;
     }
 
     public function exchange(Money $money, Currency $toCurrency): Money
@@ -22,6 +26,8 @@ class Exchanger implements ExchangerContract
             return $money;
         }
 
-        $rate = $this->exchangeRates->getExchangeRateFor($money->getCurrency());
+        $rate = $this->exchangeRates->getExchangeRate($money->getCurrency(), $toCurrency);
+
+        return new Money($this->math->div($money, $rate), $toCurrency);
     }
 }
