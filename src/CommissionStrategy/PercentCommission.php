@@ -2,12 +2,23 @@
 
 namespace App\CommissionStrategy;
 
-use App\Contract\CommissionStrategy;
+use App\Entity\Money;
+use App\Contract\Service\Math;
 
-class PercentCommission implements CommissionStrategy
+class PercentCommission extends Strategy
 {
-    public function execute()
+    private $math;
+
+    private $commissionPercent;
+
+    public function __construct(Math $math, $commissionPercent)
     {
-        // TODO: Implement execute() method.
+        $this->math = $math;
+        $this->commissionPercent = $commissionPercent;
+    }
+
+    public function execute(Money $money, array $operations = []): Money
+    {
+        return new Money($this->math->mul($money, $this->commissionPercent), $money->getCurrency());
     }
 }

@@ -9,6 +9,6 @@ class MathFactory
 {
     public static function create(): Math
     {
-        return new BcMath(2);
+        return new BcMath(3);
     }
 }

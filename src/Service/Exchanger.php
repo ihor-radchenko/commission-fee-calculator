@@ -5,6 +5,7 @@ namespace App\Service;
 use App\Entity\Money;
 use App\Entity\Currency;
 use App\Contract\Service\Math;
+use App\Factory\CurrencyFactory;
 use App\Contract\Repository\ExchangeRateRepository;
 use App\Contract\Service\Exchanger as ExchangerContract;
 
@@ -26,8 +27,22 @@ class Exchanger implements ExchangerContract
             return $money;
         }
 
+        return $toCurrency->isSame(CurrencyFactory::createBase())
+            ? $this->directExchange($money, $toCurrency)
+            : $this->reverseExchange($money, $toCurrency);
+    }
+
+    private function directExchange(Money $money, Currency $toCurrency): Money
+    {
         $rate = $this->exchangeRates->getExchangeRate($money->getCurrency(), $toCurrency);
 
         return new Money($this->math->div($money, $rate), $toCurrency);
+    }
+
+    private function reverseExchange(Money $money, Currency $toCurrency): Money
+    {
+        $rate = $this->exchangeRates->getExchangeRate($toCurrency, $money->getCurrency());
+
+        return new Money($this->math->mul($money, $rate), $toCurrency);
     }
 }

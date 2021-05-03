@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use DateTimeImmutable;
+use App\Factory\CommissionStrategyFactory;
 
 class Operation
 {
@@ -14,12 +15,15 @@ class Operation
 
     private $money;
 
-    public function __construct(DateTimeImmutable $date, string $type, User $user, Money $money)
+    private $prev;
+
+    public function __construct(DateTimeImmutable $date, string $type, User $user, Money $money, Operation $prev = null)
     {
         $this->date = $date;
         $this->type = $type;
         $this->user = $user;
         $this->money = $money;
+        $this->prev = $prev;
     }
 
     public function getDate(): DateTimeImmutable
@@ -40,5 +44,15 @@ class Operation
     public function getMoney(): Money
     {
         return $this->money;
+    }
+
+    public function getPrev(): ?Operation
+    {
+        return $this->prev;
+    }
+
+    public function getCommission(): Money
+    {
+        return CommissionStrategyFactory::createFor($this)->execute($this->getMoney());
     }
 }

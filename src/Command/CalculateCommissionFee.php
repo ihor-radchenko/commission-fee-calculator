@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use App\Entity\Operation;
 use App\Factory\OperationRepositoryFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -29,6 +30,10 @@ class CalculateCommissionFee extends Command
         }
 
         $operations = OperationRepositoryFactory::create($input->getArguments());
+
+        $operations->each(static function (Operation $operation) use ($output) {
+            $output->writeln($operation->getCommission());
+        });
 
         return self::SUCCESS;
     }
