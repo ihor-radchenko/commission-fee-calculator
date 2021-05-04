@@ -1,26 +1,24 @@
-#Requirements
+# Requirements
 
 1. PHP 7.3
 2. Composer
 
-#Installation
-Copy .env.example to .env
+# Installation
 
-set **EXCHANGERATESAPI_KEY** value
+1. Copy .env.example to .env
+2. set value for **EXCHANGERATESAPI_KEY**
+3. Install composer dependencies:
+    ```shell
+    composer install
+    ```
 
-Install composer dependencies
-
-```shell
-composer install
-```
-
-#Run script
+# Run script
 
 ```shell
 php bin/application.php storage/input.csv
 ```
 
-#Run tests
+# Run tests
 
 ```shell
 composer test
