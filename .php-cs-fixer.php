@@ -5,8 +5,9 @@ include __DIR__ . '/vendor/autoload.php';
 $finder = PhpCsFixer\Finder::create()
     ->in(['src']);
 
-return PhpCsFixer\Config::create()
-    ->setRules([
+$config = new PhpCsFixer\Config();
+
+return $config->setRules([
         '@Symfony'              => true,
         'no_alternative_syntax' => true,
         'strict_comparison'     => true,
