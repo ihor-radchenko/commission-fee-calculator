@@ -17,7 +17,7 @@ class Operation
 
     private $prev;
 
-    public function __construct(DateTimeImmutable $date, string $type, User $user, Money $money, Operation $prev = null)
+    public function __construct(DateTimeImmutable $date, string $type, User $user, Money $money, ?Operation $prev = null)
     {
         $this->date = $date;
         $this->type = $type;
