@@ -3,11 +3,19 @@
 namespace App\CommissionStrategy;
 
 use App\Contract\CommissionStrategy;
+use App\Entity\Money;
 
-class FreeChargeCommission implements CommissionStrategy
+class FreeChargeCommission extends Strategy
 {
-    public function execute()
+    private $freeStrategy;
+
+    public function __construct(CommissionStrategy $commissionStrategy)
     {
-        // TODO: Implement execute() method.
+        $this->freeStrategy = $commissionStrategy;
+    }
+
+    public function execute(Money $money, array $operations = []): Money
+    {
+        return parent::execute($this->freeStrategy->execute($money, $operations), $operations);
     }
 }

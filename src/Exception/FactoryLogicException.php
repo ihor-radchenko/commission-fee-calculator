@@ -2,8 +2,8 @@
 
 namespace App\Exception;
 
-use Throwable;
 use LogicException;
+use Throwable;
 
 class FactoryLogicException extends LogicException
 {

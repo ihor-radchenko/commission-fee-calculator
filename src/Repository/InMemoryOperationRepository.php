@@ -2,13 +2,13 @@
 
 namespace App\Repository;
 
-use App\Entity\User;
-use App\Entity\Money;
-use DateTimeImmutable;
-use App\Entity\Currency;
-use App\Entity\Operation;
 use App\Contract\OperationDataProvider;
 use App\Contract\Repository\OperationRepository;
+use App\Entity\Currency;
+use App\Entity\Money;
+use App\Entity\Operation;
+use App\Entity\User;
+use DateTimeImmutable;
 
 class InMemoryOperationRepository implements OperationRepository
 {
@@ -18,15 +18,28 @@ class InMemoryOperationRepository implements OperationRepository
     {
         $repository = new self();
 
+        $previous = [];
+
         foreach ($dataProvider as $rawOperation) {
             $user = new User($rawOperation['user_id'], $rawOperation['user_type']);
             $money = new Money($rawOperation['amount'], new Currency($rawOperation['currency']));
             $operationDate = DateTimeImmutable::createFromFormat('Y-m-d', $rawOperation['date'])
                 ->setTime(0, 0);
 
-            $repository->storage[] = new Operation($operationDate, $rawOperation['operation_type'], $user, $money);
+            $prevOperation = $previous[$rawOperation['operation_type']][$rawOperation['user_id']] ?? null;
+
+            $operation = new Operation($operationDate, $rawOperation['operation_type'], $user, $money, $prevOperation);
+
+            $repository->storage[] = $operation;
+
+            $previous[$rawOperation['operation_type']][$rawOperation['user_id']] = $operation;
         }
 
         return $repository;
+    }
+
+    public function each(callable $callable): void
+    {
+        array_walk($this->storage, $callable);
     }
 }

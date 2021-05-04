@@ -21,6 +21,10 @@ class Money
 
     public function __toString(): string
     {
-        return $this->amount;
+        $precision = $this->getCurrency()->getPrecision();
+        $decimals = 10 ** $precision;
+        $amount = ceil($this->amount * $decimals) / $decimals;
+
+        return number_format($amount, $precision, '.', '');
     }
 }

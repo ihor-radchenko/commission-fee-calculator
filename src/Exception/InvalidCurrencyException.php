@@ -2,9 +2,9 @@
 
 namespace App\Exception;
 
-use Throwable;
 use App\Entity\Currency;
 use InvalidArgumentException;
+use Throwable;
 
 class InvalidCurrencyException extends InvalidArgumentException
 {

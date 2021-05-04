@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use App\Entity\Operation;
 use App\Factory\OperationRepositoryFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -10,9 +11,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CalculateCommissionFee extends Command
 {
-    protected const SUCCESS = 0;
-    protected const ERROR = 1;
-
     protected static $defaultName = 'calculate:commission-fee';
 
     protected function configure(): void
@@ -25,11 +23,15 @@ class CalculateCommissionFee extends Command
         if (!file_exists($input->getArgument('csv_path'))) {
             $output->writeln('The file provided does not exist.');
 
-            return self::ERROR;
+            return Command::FAILURE;
         }
 
         $operations = OperationRepositoryFactory::create($input->getArguments());
 
-        return self::SUCCESS;
+        $operations->each(static function (Operation $operation) use ($output) {
+            $output->writeln($operation->getCommission());
+        });
+
+        return Command::SUCCESS;
     }
 }

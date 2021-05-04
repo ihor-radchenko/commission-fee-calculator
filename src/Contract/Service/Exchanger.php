@@ -2,8 +2,8 @@
 
 namespace App\Contract\Service;
 
-use App\Entity\Money;
 use App\Entity\Currency;
+use App\Entity\Money;
 
 interface Exchanger
 {

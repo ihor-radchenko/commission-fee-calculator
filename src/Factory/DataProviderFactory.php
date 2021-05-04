@@ -3,8 +3,8 @@
 namespace App\Factory;
 
 use App\Contract\OperationDataProvider;
-use App\Exception\FactoryLogicException;
 use App\DataProvider\CsvOperationDataProvider;
+use App\Exception\FactoryLogicException;
 
 class DataProviderFactory
 {

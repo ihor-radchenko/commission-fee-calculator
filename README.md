@@ -1,11 +1,25 @@
-# Paysera Commission task skeleton
+# Requirements
 
-Following steps:
-- don't forget to change `Paysera` namespace and package name in `composer.json`
- to your own, as `Paysera` keyword should not be used anywhere in your task;
-- `\Paysera\CommissionTask\Service\Math` is an example class provided for the skeleton and could or could not be used by your preference;
-- needed scripts could be found inside `composer.json`;
-- before submitting the task make sure that all the scripts pass (`composer run test` in particular);
-- this file should be updated before submitting the task with the documentation on how to run your program.
+1. PHP 7.3
+2. Composer
 
-Good luck! :) 
+# Installation
+
+1. Copy .env.example to .env
+2. set value for **EXCHANGERATESAPI_KEY**
+3. Install composer dependencies:
+    ```shell
+    composer install
+    ```
+
+# Run script
+
+```shell
+php bin/application.php storage/input.csv
+```
+
+# Run tests
+
+```shell
+composer test
+```

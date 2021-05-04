@@ -35,7 +35,7 @@ class CsvOperationDataProvider implements OperationDataProvider
 
     public function next()
     {
-        $this->index++;
+        ++$this->index;
     }
 
     public function key()
