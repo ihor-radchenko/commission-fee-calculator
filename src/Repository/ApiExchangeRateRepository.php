@@ -2,11 +2,11 @@
 
 namespace App\Repository;
 
-use GuzzleHttp\Client;
+use App\Contract\Repository\ExchangeRateRepository;
 use App\Entity\Currency;
 use App\Entity\ExchangeRate;
 use App\Exception\InvalidCurrencyException;
-use App\Contract\Repository\ExchangeRateRepository;
+use GuzzleHttp\Client;
 
 class ApiExchangeRateRepository implements ExchangeRateRepository
 {
@@ -25,7 +25,7 @@ class ApiExchangeRateRepository implements ExchangeRateRepository
         $response = $this->client->get('latest', [
             'query' => [
                 'access_key' => $this->accessKey,
-                'symbols'    => (string) $fromCurrency,
+                'symbols' => (string) $fromCurrency,
 //                'base'       => (string) $toCurrency,
             ],
         ])->getBody()->getContents();

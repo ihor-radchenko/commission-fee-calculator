@@ -2,8 +2,8 @@
 
 namespace App\Factory;
 
-use App\Service\Exchanger;
 use App\Contract\Service\Exchanger as ExchangerContract;
+use App\Service\Exchanger;
 
 class ExchangerFactory
 {

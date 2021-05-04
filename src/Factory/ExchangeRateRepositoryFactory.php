@@ -2,12 +2,12 @@
 
 namespace App\Factory;
 
-use GuzzleHttp\Client;
+use App\Contract\Repository\ExchangeRateRepository;
 use App\Exception\FactoryLogicException;
 use App\Repository\ApiExchangeRateRepository;
-use App\Repository\StubExchangeRateRepository;
-use App\Contract\Repository\ExchangeRateRepository;
 use App\Repository\CacheProxyExchangeRateRepository;
+use App\Repository\StubExchangeRateRepository;
+use GuzzleHttp\Client;
 
 class ExchangeRateRepositoryFactory
 {

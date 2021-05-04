@@ -11,9 +11,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CalculateCommissionFee extends Command
 {
-    protected const SUCCESS = 0;
-    protected const FAILURE = 1;
-
     protected static $defaultName = 'calculate:commission-fee';
 
     protected function configure(): void
@@ -26,7 +23,7 @@ class CalculateCommissionFee extends Command
         if (!file_exists($input->getArgument('csv_path'))) {
             $output->writeln('The file provided does not exist.');
 
-            return self::FAILURE;
+            return Command::FAILURE;
         }
 
         $operations = OperationRepositoryFactory::create($input->getArguments());
@@ -35,6 +32,6 @@ class CalculateCommissionFee extends Command
             $output->writeln($operation->getCommission());
         });
 
-        return self::SUCCESS;
+        return Command::SUCCESS;
     }
 }

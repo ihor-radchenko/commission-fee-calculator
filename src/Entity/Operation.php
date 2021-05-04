@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
-use DateTimeImmutable;
 use App\Factory\CommissionStrategyFactory;
+use DateTimeImmutable;
 
 class Operation
 {

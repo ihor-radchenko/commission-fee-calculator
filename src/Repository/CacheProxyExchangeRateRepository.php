@@ -2,9 +2,9 @@
 
 namespace App\Repository;
 
+use App\Contract\Repository\ExchangeRateRepository;
 use App\Entity\Currency;
 use App\Entity\ExchangeRate;
-use App\Contract\Repository\ExchangeRateRepository;
 
 class CacheProxyExchangeRateRepository implements ExchangeRateRepository
 {

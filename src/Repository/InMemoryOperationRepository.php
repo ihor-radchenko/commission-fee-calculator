@@ -2,13 +2,13 @@
 
 namespace App\Repository;
 
-use App\Entity\User;
-use App\Entity\Money;
-use DateTimeImmutable;
-use App\Entity\Currency;
-use App\Entity\Operation;
 use App\Contract\OperationDataProvider;
 use App\Contract\Repository\OperationRepository;
+use App\Entity\Currency;
+use App\Entity\Money;
+use App\Entity\Operation;
+use App\Entity\User;
+use DateTimeImmutable;
 
 class InMemoryOperationRepository implements OperationRepository
 {

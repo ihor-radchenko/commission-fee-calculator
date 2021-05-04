@@ -13,7 +13,6 @@ class FreeLimitOperation extends Strategy
         $this->freeLimit = $freeLimit;
     }
 
-
     public function execute(Money $money, array $operations = []): Money
     {
         if (count($operations) >= $this->freeLimit) {

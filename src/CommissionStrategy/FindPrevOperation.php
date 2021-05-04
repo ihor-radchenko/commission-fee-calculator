@@ -3,8 +3,8 @@
 namespace App\CommissionStrategy;
 
 use App\Entity\Money;
-use DateTimeImmutable;
 use App\Entity\Operation;
+use DateTimeImmutable;
 
 class FindPrevOperation extends Strategy
 {

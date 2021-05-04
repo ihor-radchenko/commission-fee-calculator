@@ -2,16 +2,16 @@
 
 namespace App\Factory;
 
-use App\Entity\Money;
-use App\Entity\Currency;
-use App\Entity\Operation;
-use App\Contract\CommissionStrategy;
-use App\Exception\FactoryLogicException;
-use App\CommissionStrategy\FreeLimitAmount;
-use App\CommissionStrategy\PercentCommission;
 use App\CommissionStrategy\FindPrevOperation;
-use App\CommissionStrategy\FreeLimitOperation;
 use App\CommissionStrategy\FreeChargeCommission;
+use App\CommissionStrategy\FreeLimitAmount;
+use App\CommissionStrategy\FreeLimitOperation;
+use App\CommissionStrategy\PercentCommission;
+use App\Contract\CommissionStrategy;
+use App\Entity\Currency;
+use App\Entity\Money;
+use App\Entity\Operation;
+use App\Exception\FactoryLogicException;
 
 class CommissionStrategyFactory
 {

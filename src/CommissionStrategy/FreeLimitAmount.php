@@ -2,9 +2,9 @@
 
 namespace App\CommissionStrategy;
 
-use App\Entity\Money;
-use App\Contract\Service\Math;
 use App\Contract\Service\Exchanger;
+use App\Contract\Service\Math;
+use App\Entity\Money;
 
 class FreeLimitAmount extends Strategy
 {

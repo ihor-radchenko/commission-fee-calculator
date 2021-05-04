@@ -2,12 +2,12 @@
 
 namespace App\Service;
 
-use App\Entity\Money;
-use App\Entity\Currency;
-use App\Contract\Service\Math;
-use App\Factory\CurrencyFactory;
 use App\Contract\Repository\ExchangeRateRepository;
 use App\Contract\Service\Exchanger as ExchangerContract;
+use App\Contract\Service\Math;
+use App\Entity\Currency;
+use App\Entity\Money;
+use App\Factory\CurrencyFactory;
 
 class Exchanger implements ExchangerContract
 {

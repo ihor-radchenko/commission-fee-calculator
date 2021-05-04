@@ -2,8 +2,8 @@
 
 namespace App\Factory;
 
-use App\Repository\InMemoryOperationRepository;
 use App\Contract\Repository\OperationRepository;
+use App\Repository\InMemoryOperationRepository;
 
 class OperationRepositoryFactory
 {

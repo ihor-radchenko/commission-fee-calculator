@@ -6,5 +6,4 @@ use Iterator;
 
 interface OperationDataProvider extends Iterator
 {
-
 }

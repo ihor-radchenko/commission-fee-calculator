@@ -2,9 +2,9 @@
 
 namespace App\Factory;
 
-use Symfony\Component\Dotenv\Dotenv;
 use App\Contract\Repository\ConfigRepository;
 use App\Repository\ConfigRepository as Config;
+use Symfony\Component\Dotenv\Dotenv;
 
 class ConfigFactory
 {

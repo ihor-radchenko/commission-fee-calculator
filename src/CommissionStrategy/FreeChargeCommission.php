@@ -2,8 +2,8 @@
 
 namespace App\CommissionStrategy;
 
-use App\Entity\Money;
 use App\Contract\CommissionStrategy;
+use App\Entity\Money;
 
 class FreeChargeCommission extends Strategy
 {

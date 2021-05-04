@@ -24,4 +24,8 @@
             <directory>./src</directory>
         </whitelist>
     </filter>
+
+    <php>
+        <env name="CURRENCIES_STORE_DRIVER" value="stub"/>
+    </php>
 </phpunit>
