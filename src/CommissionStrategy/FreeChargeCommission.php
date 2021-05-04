@@ -16,8 +16,6 @@ class FreeChargeCommission extends Strategy
 
     public function execute(Money $money, array $operations = []): Money
     {
-        $moneyWithDiscount = $this->freeStrategy->execute($money, $operations);
-
-        return parent::execute($moneyWithDiscount, $operations);
+        return parent::execute($this->freeStrategy->execute($money, $operations), $operations);
     }
 }

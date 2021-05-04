@@ -3,30 +3,44 @@
 namespace App\Factory;
 
 use GuzzleHttp\Client;
+use App\Exception\FactoryLogicException;
 use App\Repository\ApiExchangeRateRepository;
 use App\Repository\StubExchangeRateRepository;
 use App\Contract\Repository\ExchangeRateRepository;
+use App\Repository\CacheProxyExchangeRateRepository;
 
 class ExchangeRateRepositoryFactory
 {
-    public static function create(): ExchangeRateRepository
+    use Singleton;
+
+    public function createInstance(): ExchangeRateRepository
     {
-        return self::createStubRepository();
+        $driver = ucfirst(ConfigFactory::create()->get('currencies.storage.driver', 'stub'));
+
+        $factoryMethod = "create{$driver}Repository";
+
+        if (method_exists($this, $factoryMethod)) {
+            return $this->{$factoryMethod}();
+        }
+
+        throw new FactoryLogicException(ExchangeRateRepository::class);
     }
 
-    private static function createApiRepository(): ExchangeRateRepository
+    private function createApiRepository(): ExchangeRateRepository
     {
         $client = new Client([
             'base_uri' => ConfigFactory::create()->get('services.exchangeratesapi.base_uri'),
         ]);
 
-        return new ApiExchangeRateRepository(
+        $exchangeRateApi = new ApiExchangeRateRepository(
             $client,
             ConfigFactory::create()->get('services.exchangeratesapi.access_key')
         );
+
+        return new CacheProxyExchangeRateRepository($exchangeRateApi);
     }
 
-    private static function createStubRepository(): ExchangeRateRepository
+    private function createStubRepository(): ExchangeRateRepository
     {
         return new StubExchangeRateRepository();
     }

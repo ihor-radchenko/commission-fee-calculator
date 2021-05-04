@@ -8,6 +8,6 @@ class CurrencyFactory
 {
     public static function createBase(): Currency
     {
-        return new Currency('eur');
+        return new Currency(ConfigFactory::create()->get('currencies.base'));
     }
 }

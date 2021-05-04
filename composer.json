@@ -15,10 +15,11 @@
     },
     "require": {
         "php": "^7.3",
+        "ext-bcmath": "*",
+        "ext-json": "*",
         "guzzlehttp/guzzle": "^7.3",
         "symfony/console": "4.4.21",
-        "ext-bcmath": "*",
-        "ext-json": "*"
+        "symfony/dotenv": "^5.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.5",
