@@ -6,7 +6,7 @@
 # Installation
 
 1. Copy .env.example to .env
-2. set value for **EXCHANGERATESAPI_KEY**
+2. Set value for **EXCHANGERATESAPI_KEY**
 3. Install composer dependencies:
     ```shell
     composer install
