@@ -3,3 +3,6 @@ vendor
 .php_cs.cache
 .phpunit.result.cache
 .env
+
+bin/php-cs-fixer
+bin/phpunit
