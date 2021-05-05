@@ -6,3 +6,5 @@ vendor
 
 bin/php-cs-fixer
 bin/phpunit
+bin/php-cs-fixer.bat
+bin/phpunit.bat
