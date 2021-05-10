@@ -13,9 +13,9 @@ trait Singleton
 
     public static function create()
     {
-        $factory = new self();
-
         if (!self::$instance) {
+            $factory = new self();
+
             self::$instance = $factory->createInstance();
         }
 
