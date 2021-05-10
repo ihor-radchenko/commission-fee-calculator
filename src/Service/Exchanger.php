@@ -21,6 +21,9 @@ class Exchanger implements ExchangerContract
         $this->math = $math;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function exchange(Money $money, Currency $toCurrency): Money
     {
         if ($money->getCurrency()->isSame($toCurrency)) {

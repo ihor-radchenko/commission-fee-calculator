@@ -12,6 +12,9 @@ class OperationRepositoryFactory
         return self::createInMemoryRepository($args);
     }
 
+    /**
+     * @description init in-memory repository from data provider iterator.
+     */
     private static function createInMemoryRepository(array $args): OperationRepository
     {
         $dataProvider = DataProviderFactory::create($args);

@@ -9,6 +9,10 @@ use App\Exception\InvalidCurrencyException;
 
 class StubExchangeRateRepository implements ExchangeRateRepository
 {
+    /**
+     * @description access to a fixed exchange rate, applied during development, debugging and testing
+     * (App\Tests\Command\CalculateCommissionFeeTest::testCalculateCommissionCommand).
+     */
     public function getExchangeRate(Currency $fromCurrency, Currency $toCurrency): ExchangeRate
     {
         $rates = [

@@ -9,6 +9,11 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Class CalculateCommissionFee.
+ *
+ * @description command for calculating commission fee, takes one argument: csv_path - path to csv file with operations.
+ */
 class CalculateCommissionFee extends Command
 {
     protected static $defaultName = 'calculate:commission-fee';

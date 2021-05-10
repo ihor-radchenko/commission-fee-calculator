@@ -18,6 +18,9 @@ class CacheProxyExchangeRateRepository implements ExchangeRateRepository
         $this->cache = [];
     }
 
+    /**
+     * @description caches the exchange rate of two currencies at runtime.
+     */
     public function getExchangeRate(Currency $fromCurrency, Currency $toCurrency): ExchangeRate
     {
         $cacheKey = $this->getCacheKey($fromCurrency, $toCurrency);

@@ -21,6 +21,9 @@ class FreeLimitAmount extends Strategy
         $this->freeAmount = $freeAmount;
     }
 
+    /**
+     * @description this handler checks the sum of all transactions during the privilege period.
+     */
     public function execute(Money $money, array $operations = []): Money
     {
         $discount = $this->getRemainingDiscount($this->calculateSum($operations));

@@ -26,6 +26,10 @@ class ExchangeRateRepositoryFactory
         throw new FactoryLogicException(ExchangeRateRepository::class);
     }
 
+    /**
+     * @description ApiExchangeRateRepository - repository with access to exchange rates via API https://exchangeratesapi.io/
+     * CacheProxyExchangeRateRepository - the repository caches the exchange rates received from the API for the runtime.
+     */
     private function createApiRepository(): ExchangeRateRepository
     {
         $client = new Client([
@@ -40,6 +44,9 @@ class ExchangeRateRepositoryFactory
         return new CacheProxyExchangeRateRepository($exchangeRateApi);
     }
 
+    /**
+     * @description repository with a fixed exchange rate, intended for development, testing and debugging.
+     */
     private function createStubRepository(): ExchangeRateRepository
     {
         return new StubExchangeRateRepository();

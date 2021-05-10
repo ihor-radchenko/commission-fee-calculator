@@ -13,6 +13,9 @@ class FreeLimitOperation extends Strategy
         $this->freeLimit = $freeLimit;
     }
 
+    /**
+     * @description this handler checks the number of operations during the privileges period.
+     */
     public function execute(Money $money, array $operations = []): Money
     {
         if (count($operations) >= $this->freeLimit) {

@@ -18,6 +18,10 @@ class FindPrevOperation extends Strategy
         $this->from = $this->getFromDate($operation, $from);
     }
 
+    /**
+     * @description this handler finds all transactions during the privileges period
+     * (from $this->from to $this->operation->getDate()).
+     */
     public function execute(Money $money, array $operations = []): Money
     {
         $operation = $this->operation;

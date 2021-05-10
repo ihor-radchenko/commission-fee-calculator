@@ -2,6 +2,11 @@
 
 namespace App\Factory;
 
+/**
+ * Trait Singleton.
+ *
+ * @description factories create a singleton with this trait.
+ */
 trait Singleton
 {
     private static $instance;

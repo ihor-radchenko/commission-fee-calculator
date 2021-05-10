@@ -14,6 +14,9 @@ class FreeChargeCommission extends Strategy
         $this->freeStrategy = $commissionStrategy;
     }
 
+    /**
+     * @description this handler applies the privileges rules to the operation.
+     */
     public function execute(Money $money, array $operations = []): Money
     {
         return parent::execute($this->freeStrategy->execute($money, $operations), $operations);

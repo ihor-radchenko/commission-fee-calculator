@@ -38,6 +38,9 @@ class InMemoryOperationRepository implements OperationRepository
         return $repository;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function each(callable $callable): void
     {
         array_walk($this->storage, $callable);

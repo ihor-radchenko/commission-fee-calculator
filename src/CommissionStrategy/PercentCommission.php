@@ -17,6 +17,9 @@ class PercentCommission extends Strategy
         $this->commissionPercent = $commissionPercent;
     }
 
+    /**
+     * @description this handler calculates the amount of commission from the operation.
+     */
     public function execute(Money $money, array $operations = []): Money
     {
         return new Money($this->math->mul($money, $this->commissionPercent), $money->getCurrency());

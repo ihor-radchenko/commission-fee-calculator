@@ -20,6 +20,9 @@ class ApiExchangeRateRepository implements ExchangeRateRepository
         $this->accessKey = $accessKey;
     }
 
+    /**
+     * @description finds the exchange rate for two currencies in API https://exchangeratesapi.io/.
+     */
     public function getExchangeRate(Currency $fromCurrency, Currency $toCurrency): ExchangeRate
     {
         $response = $this->client->get('latest', [
